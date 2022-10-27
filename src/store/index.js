@@ -1,10 +1,25 @@
-const { createStore } = require("redux");
+const { createStore } = require('redux');
 
-const reducer = (state = {counter: 0}, action) => {
+const defaultState = {
+  counter: 0,
+};
+
+const reducer = (state = defaultState, action) => {
+  if (action.type === 'increment') {
     return {
-        counter: state.counter + 1
-    }
-}
+      counter: state.counter + 1,
+    };
+  }
+  if (action.type === 'decrement') {
+    return {
+      counter: state.counter - 1,
+    };
+  }
+
+  return {
+    counter: state.counter + 1,
+  };
+};
 
 const store = createStore(reducer);
 
